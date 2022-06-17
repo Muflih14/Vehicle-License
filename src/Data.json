@@ -1,0 +1,49 @@
+[
+	{
+		"cars": [
+			{
+				"id": 1,
+				"name": "LEXUS, SUV",
+                "year": "2022",
+                "price": "$85",
+				"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3DcTim9Wx8RW7d7ZBWgNZybhmzEsKI957Aw&usqp=CAU"
+			},
+			{
+				"id": 2,
+				"name": "Toyota Camry",
+                "year": "2022",
+                "price": "$100",
+				"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQINECG9mueQJGbIrmr_mVLpA-iMaqHwly7tA&usqp=CAU"
+			},
+			{
+				"id": 3,
+				"name": "Lexus",
+                "year":"2021",
+                "price":"$150",
+				"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRi0RHkfWSekw3NBf-aobbSt3vVCbYC_GI7g&usqp=CAU"
+			},
+            {
+				"id": 4,
+				"name": "Lexus BM",
+                "year":"2022",
+                "price":"$100",
+				"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-1dMpxpTl355zcDg9_EeACbx9M_VqDKQ1Yw&usqp=CAU"
+			},
+			{
+				"id": 5,
+				"name": "Rolls Royce",
+                "year":"2009",
+                "price":"$180",
+				"img": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/body-image/public/1-rolls-royce-ghost-2020-uk-fd-hero-front_1.jpg?itok=bJTVAWTw"
+			},
+            {
+				"id": 6,
+				"name": "Range Rover SVAutobiography",
+                "year":"2010",
+                "price":"$175",
+				"img": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/body-image/public/rr-auto-lwb-svo-0161_0.jpg?itok=zEjf8hD8"
+			}
+
+		]
+	}
+]

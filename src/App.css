@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
+.header{
+  background-color:lightblue;
+  height: 20%;
+  padding: 3%;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+section{
+  background-image:linear-gradient(to bottom right, rgba(238,130,238,0), rgba(75,0,130,0.5));
+  height: 900px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.CarList {
+  background-color: white;
+  margin: 3%;
+  padding: 1%;
+  display: inline-grid;
+  height: 10%;
+  width: 30%;
+  border-radius: 10px;
+  border-color: lightblue;
+  border-style: solid;
+  box-shadow: 10px 10px 5px lightblue;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Cars{
+  margin-left:15%;
 }
-
-.App-link {
-  color: #61dafb;
+.licenseCard{
+height: 650px;
+padding: 7%;
+line-height: 2;
+font-size:x-large;
+width: 60%;
+margin: -600px auto 0 300px;
+background-color: rgb(224, 195, 26);
+border: 1px dashed;
+position:absolute;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.formDetails{
+  margin-top:10%;
+  margin-bottom:10%;
 }
+label, input{
+  font: 1.5em sans-serif;
+  color: darkblue;
+  margin: 1%;
+  line-height: 1.5;
+}
+.licenseDetails{
+  background-color: white;
+  margin: 2% 20% 0 25%;
+  padding: 2%;
+  width: 50%;
+  height: 600px;
+  z-index: 9;
+}
+.licenseInfo{
+  padding: 5% 0% 0% 25%;
+}
+.LicensePlate{
+  font-size: 3rem;
+  color:darkblue;
+  border: 3px solid;
+  padding: 1%;
+  margin: 0 0 10% 38%;
+  width: 400px;
+}
+.mintNFT{
+padding-top: 20%;
+}
+.NFT{
+  background-image:linear-gradient(to bottom right, rgba(238,130,238,0), rgba(75,0,130,0.5));
+  height: 900px;
+}
+.plateDetails{
+margin-left:-180px;
+};
