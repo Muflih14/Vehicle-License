@@ -113,14 +113,11 @@ export default function CarList() {
 			))}
 			</div>
 				<div className="sucessPageButtons row">
-					<div className="col-sm-4">
+					<div className="col-sm-6">
 						<button className="btn btn-primary Back" onClick={()=>setShow(true)}>Back</button>
 					</div>
-					<div className="col-sm-4">
-						<button onClick={fetchTokenURI} style={{ backgroundColor: "green" }}>MINT NFT</button>
-					</div>
-					<div className="col-sm-4">
-						<button onClick= {onMintNFTClick} className="btn btn-warning">CONTINUE</button>
+					<div className="col-sm-6">
+						<button onClick={()=>{fetchTokenURI(); onMintNFTClick()}} style={{ backgroundColor: "green" }}>MINT NFT</button>
 					</div>
 				</div>
 			</div>

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Home from "./components/Home";
 import Success from "./components/Success";
-import License from "./components/License";
 import './App.css';
 import { Routes, Route, useNavigationType, useLocation, } from "react-router-dom";
 
@@ -27,11 +26,7 @@ useEffect(() => {
             title = "";
             metaDescription = "";
             break      
-        case "/License":
-            title = "";
-            metaDescription = "";
-            break;   
-    }
+     }
     if (title) {
         document.title = title;
     }
@@ -47,7 +42,6 @@ return (
   <Routes>
   <Route path="/" element={<Home />}/>
   <Route path="/success" element={<Success />}/>
-  <Route path="/License" element={<License />}/>
   </Routes>);
 }
 
