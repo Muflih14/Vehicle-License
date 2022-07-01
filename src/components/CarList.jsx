@@ -8,42 +8,43 @@ const VehicleNFTAddress="0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
 export default function CarList() {
 
-// Requests access to the user's Meta Mask Account
-  async function requestAccount() {
+	// Requests access to the user's Meta Mask Account
+  	async function requestAccount() {
     await window.ethereum.request({ method: "eth_requestAccounts" });
-  }
+  		}
 
-  // Fetches the tokenURI
-  async function fetchTokenURI() {
-    // If MetaMask exists
-    if (typeof window.ethereum !== "undefined") {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const contract = new ethers.Contract(
-        VehicleNFTAddress,									
-        VehicleNFT.abi,
-        provider
-      );
-      try {
-        const data = await contract.tokenURI();
-        console.log("data: ", data);
-      } catch (error) {
-        console.log("Error: ", error);
-      }
-    }
-  }
+  	// Fetches the tokenURI
+  	async function fetchTokenURI() {
+    
+	// If MetaMask exists
+	if (typeof window.ethereum !== "undefined") {
+		const provider = new ethers.providers.Web3Provider(window.ethereum);
+		const contract = new ethers.Contract(
+			VehicleNFTAddress,									
+			VehicleNFT.abi,
+			provider
+		);
+		try {
+			const data = await contract.tokenURI();
+			console.log("data: ", data);
+		} catch (error) {
+			console.log("Error: ", error);
+		}
+		}
+	}
 
-// navigate to success page
+	// navigate to success page
 	const navigate = useNavigate();
-    const onMintNFTClick = useCallback(() => {
-         navigate("/success");
-     }, [navigate]);
+	const onMintNFTClick = useCallback(() => {
+		navigate("/success");
+	}, [navigate]);
 
-// show selected vehicle details
+	// show selected vehicle details
 	const [show, setShow] = useState(true);
 	const [selected, setSelected] = useState(new Set());
 	const [cars, setCars] = useState(new Map());
 
-// vehicle data
+	// vehicle data
 	useEffect(() => {
 		setCars(
 			new Map([
@@ -54,9 +55,9 @@ export default function CarList() {
 				["Rolls", { model: "Rolls Royce Phantom", color: "Silver", year: "2009", img:"https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/body-image/public/1-rolls-royce-ghost-2020-uk-fd-hero-front_1.jpg?itok=bJTVAWTw", chassisNo: "GH89IJB64CK9GHT"}],
 				["Range", { model: "Range Rover SVA", color: "Grey", year: "2010", img: "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/body-image/public/rr-auto-lwb-svo-0161_0.jpg?itok=zEjf8hD8", chassisNo: "TY9J87VJC0J29LC"}]
 				])
-			);
-		}, []
-	);
+				);
+			}, []
+		);
 
 	// select selected car
     const [carClicked, setCarClicked] = useState(false);
@@ -73,54 +74,53 @@ export default function CarList() {
 
 	return (
 		<div className="container-fluid">
-		{show?
-		// mapped car list
-		<div className="container-fluid Cars">
-			{[...cars].map(([key, value]) => (
-				<div className="CarList" key={key}>
-				<h2>{value.model}</h2>
-				<img className="mb-3" src={value.img} width="400" alt="" />
-				<h5>Color:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{value.color}</h5>
-				<h5>Year:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{value.year}</h5>
-				<h5>Chasis No.:&nbsp;&nbsp;{value.chassisNo}</h5>				
-				<input type="checkbox" onChange={handleChange} value={key} />
-				</div>
-			))}
-			
-			<div className="mintLicense">    
-				<button className="btn btn-primary" disabled={!carClicked} onClick={()=>setShow(false)}>Mint License</button>
-			</div>
-			
-		</div>
-
-		:
-// selected car
-		<div className="container-fluid map">
-			<div>
-			{[...selected].map((key) => (
-				<div className="mapVehicle" key={key}>
-					<div>
-						<h4>
-						Model:&nbsp; {cars.get(key).model}<br/>
-						Color:&nbsp;&nbsp; {cars.get(key).color}<br/>
-						Year:&nbsp;&nbsp;&nbsp;&nbsp; {cars.get(key).year}<br/>
-						Chasis:&nbsp; {cars.get(key).chassisNo}<br/>
-						</h4>
-						{/* TokenURI: {data} */}
-					</div>
-				</div>
+			{show?
+				// mapped car list
+				<div className="container-fluid Cars">
+					{[...cars].map(([key, value]) => (
+						<div className="CarList" key={key}>
+							<h2>{value.model}</h2>
+							<img className="mb-3" src={value.img} width="400" alt="" />
+							<h5>Color:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{value.color}</h5>
+							<h5>Year:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{value.year}</h5>
+							<h5>Chasis No.:&nbsp;&nbsp;{value.chassisNo}</h5>				
+							<input type="checkbox" onChange={handleChange} value={key} />
+						</div>
+					))}
 				
-			))}
-			</div>
-				<div className="sucessPageButtons row">
-					<div className="col-sm-6">
-						<button className="btn btn-primary Back" onClick={()=>setShow(true)}>Back</button>
+					<div className="mintLicense">    
+						<button className="btn btn-primary" disabled={!carClicked} onClick={()=>setShow(false)}>Mint License</button>
 					</div>
-					<div className="col-sm-6">
-						<button onClick={()=>{fetchTokenURI(); onMintNFTClick()}} style={{ backgroundColor: "green" }}>MINT NFT</button>
+					
+				</div>
+
+			:
+				// selected car
+				<div className="container-fluid map">
+					<div>
+						{[...selected].map((key) => (
+							<div className="mapVehicle" key={key}>
+								<div>
+									<h4>
+										Model:&nbsp; {cars.get(key).model}<br/>
+										Color:&nbsp;&nbsp; {cars.get(key).color}<br/>
+										Year:&nbsp;&nbsp;&nbsp;&nbsp; {cars.get(key).year}<br/>
+										Chasis:&nbsp; {cars.get(key).chassisNo}<br/>
+									</h4>
+									{/* TokenURI: {data} */}
+								</div>
+							</div>
+						))}
+					</div>
+					<div className="sucessPageButtons row">
+						<div className="col-sm-6">
+							<button className="btn btn-primary Back" onClick={()=>setShow(true)}>Back</button>
+						</div>
+						<div className="col-sm-6">
+							<button onClick={()=>{fetchTokenURI(); onMintNFTClick()}} style={{ backgroundColor: "green" }}>MINT NFT</button>
+						</div>
 					</div>
 				</div>
-			</div>
 			}
 		</div>
 	);
