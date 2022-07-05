@@ -1,6 +1,6 @@
 import React from "react";
-import CarList from "./CarList";
 import Connect from "./Connect";
+import "../App.css";
 function Home (){
     
     return(
@@ -9,9 +9,6 @@ function Home (){
                 <h1>Phoenix Car Dealership</h1>
                 <Connect />
             </div>
-            <div className="body">
-                <CarList />
-             </div>
         </div>
     )
 };
