@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Cars from "./Cars";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -13,6 +13,9 @@ const VehicleLicense = () => {
   const { id } = useParams();
   const carItem = Cars.find((carItem) => carItem.id === id);
 
+
+  const [license, setLicense] = useState("");
+
   // Fetches the License
   async function maptLicense() {
     
@@ -25,8 +28,9 @@ const VehicleLicense = () => {
 			provider
 		);
 		try {
-			const data = await contract.tokenURI();
+			const data = await contract.maptLicense();
 			console.log("data: ", data);
+      setLicense(data);
 		} catch (error) {
 			console.log("Error: ", error);
 		}
@@ -42,10 +46,11 @@ const VehicleLicense = () => {
         <h2>Year:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{carItem.year}</h2>
         <h2>Chasis No.:&nbsp;&nbsp;{carItem.chassisNo}</h2>
         <h2>TOKEN URI: {carItem.tokenURI}</h2>
+        <h2>LICENSE:{license} </h2> 
       </div>
       <div className="text-center">
         <Link to={`/mapSuccess`}> 
-          <button className="btn btn-primary" onClick = {maptLicense}>MAP VEHICLE TO OWNER</button>
+          <button className="btn btn-primary" onClick = {maptLicense}>MAP LICENSE TO VEHICLE </button>
         </Link>  
       </div>
     </div>

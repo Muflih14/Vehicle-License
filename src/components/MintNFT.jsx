@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Cars from "./Cars";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -11,6 +11,8 @@ const VehicleNFTAddress="0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 const MintNFT = () => {
   const { id } = useParams();
   const carItem = Cars.find((carItem) => carItem.id === id);
+
+  const [token, setToken] = useState("");
 
   // Fetches the tokenURI
   async function fetchTokenURI() {
@@ -26,6 +28,7 @@ const MintNFT = () => {
 		try {
 			const data = await contract.tokenURI();
 			console.log("data: ", data);
+      setToken(data);
 		} catch (error) {
 			console.log("Error: ", error);
 		}
@@ -41,7 +44,7 @@ const MintNFT = () => {
           <h2> Color:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{carItem.color}</h2>
           <h2>Year:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{carItem.year}</h2>
           <h2>Chasis No.:&nbsp;&nbsp;{carItem.chassisNo}</h2>
-          <h2>TOKEN URI: {carItem.tokenURI}</h2>
+          <h2>TOKEN URI: {token}</h2>
         </div>
         <div className="text-center">
           <Link to={`/Success/${carItem.id}`}> 
